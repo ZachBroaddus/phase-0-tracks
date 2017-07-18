@@ -1,0 +1,40 @@
+header {
+  background-color: #0D76BD;
+  opacity: 0.8;
+  font-family: Arial;
+  padding: 5px;
+}
+
+.column-1 {
+  background-color: grey;
+  float: left;
+  width: 48.5%;
+  padding: 5px;
+  padding-bottom: 20px;
+  opacity: .75;
+}
+
+.column-2{
+  background-color: grey;
+  float:right;
+  width: 48.5%;
+  padding: 5px;
+  padding-bottom: 40px;
+  opacity: .75;
+}
+
+ .container{
+   overflow: auto;
+   background-image: url("https://assets-cdn.github.com/images/modules/logos_page/Octocat.png");
+   background-repeat: no-repeat;
+ }
+ 
+ a {
+   color: #872525;
+ }
+
+footer{
+  background-color: #0D76BD;
+  padding: 50px;
+  margin: 5px;
+   }
