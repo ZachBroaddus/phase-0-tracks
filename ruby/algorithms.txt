@@ -1,0 +1,72 @@
+Use an Elevator:
+-Enter elevator moving forward until encountering a wall
+-Turn 180 degrees
+-Move right without turning until encountering a wall
+-Move forward until encountering a wall
+-Check facing wall for elevator control panel
+    -If control panel is present:
+        -Stay put
+    -Else
+        -Move left without turning until encountering a wall
+        -Check facing wall for elevator control panel
+            -If control panel is present:
+                -Stay put
+            -Else
+                -Screech loudly until help arrives
+-Ask human "Which floor would you like to go to?"
+-Store human's response in memory
+-Until floor number on control panel matches human's response:
+    -Search control panel starting with floor 1 and compare to human's response
+        -If match not found:
+            -Move to next floor number on control panel and compare
+        -Else (match found):
+            -Move arm to proximity of control panel
+            -Press button corresponding to matching floor number
+-Wait 60 seconds for elevator to start moving
+    -If elevator starts moving within 60 seconds:
+        -Do nothing
+    -Else:
+        -Screech loudly until help arrives
+-While elevator is moving:
+    -Wait patiently
+-Once elevator stops, wait 60 seconds for doors to open
+    -If doors open:
+        -Locate human
+        -Follow human out of elevator
+    -Else
+        -Screech loudly until help arrives
+
+                
+
+Make Coffee with a Coffee Maker:
+-Open top lid of coffee maker
+-Open coffee filter package
+-Remove coffee filter
+-Place coffee filter into filter basket of coffee maker
+-Grab water pitcher
+-Pick up water pitcher
+-Until water level is at 5 cups:
+    -tip water pitcher and pour water at a rate of 2 oz/s
+-Put down water pitcher
+-Grab coffee bean container
+-Open coffee bean container
+-Pick up coffee bean container
+-Until coffee grinder is half full:
+    -Tip coffee bean container and pour beans into grinder at a rate of 10 beans/s
+-Put down coffee bean container
+-Grab coffee grinder lid
+-Pick up coffee grinder lid
+-Place coffee grinder lid onto coffee grinder
+-Press button on coffee grinder and hold for 10 seconds
+-Grab coffee grinder lid
+-Remove coffee grinder lid from coffee grinder
+-Put down coffee grinder lid
+-Grab portion of coffee grinder that contains grounds
+-Remove portion of coffee grinder that contains grounds from coffee grinder base
+-Until coffee grinder portion containing grounds is empty:
+    -Tip coffee grinder portion and pour coffee grounds into filter basket of coffee maker at a rate of 1 oz/s
+-Put down coffee grinder portion
+-Close top lid of coffee maker
+-Locate on/off switch on side of coffee maker
+-Flip switch to 'on' position
+-Initiate coffee brewing announcement/celebratory dance
