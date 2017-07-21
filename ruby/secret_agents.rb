@@ -1,5 +1,4 @@
 #Release 2
-
 # For the Encrypt Method
 #  pass a string into a the method as a parameter
 #  loop through the string one at a time using the index
@@ -8,29 +7,36 @@
 #        - otherwise skip
 #  assuming need to change long term, run bang!
 
+
 def encrypt(string)
   x = string.length
   i = 0
+  word = ""
   while x > 0
-    if string[i] != " "
-      print string[i].next
+    if string[i] != " " && string[i] != "z"
+      letter = string[i].next
+      i += 1
+    elsif string[i] == "z"
+      letter = "a"
       i += 1
     else
-      print string[i]
+      letter = string[i]
       i += 1
     end
   x -= 1
+  word += letter
   end
+  return word
 end
 
-# encrypted_word = encrypt("dev bootcamp")
-# p encrypted_word
+# encrypted_word = encrypt("zed")
+
+
+
+
+
 # puts encrypt("dev bootcamp")
 # puts encrypt("hello my name is jamie")
-
-
-
-
 # For our Decrypt Method
 # make a variable of whole alphabet
 # pass in our encrypted string as a parameter
@@ -42,21 +48,27 @@ end
 #  print out the decrypted word
 
 
-
 def decrypt(string)
     alphabet = "abcdefghijklmnopqrstuvwxyz"
     x = 0
     i = 0
+    word = ""
     while x < string.length
       letter = string[i]
           if string[i] == " "
-            print " "
+            secret_letter = " "
           else
-          print alphabet[alphabet.index(letter) - 1]
+          secret_letter = alphabet[alphabet.index(letter) - 1]
           end
       x += 1
       i += 1
+      word += secret_letter
     end
+    return word
 end
 
-decrypt("dev bootcamp")
+# puts decrypt(encrypted_word)
+
+
+# A nested method call like <decrypt(encrypt("swordfish"))> works because the 'encrypt' method is running first and returning
+# the encrypted word. That value is then passed into the 'decrypt' method as an argument and decrypted.
