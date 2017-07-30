@@ -1,7 +1,6 @@
-# Define methods that take a name and generates a fake name
-# Reverses name
+# Define methods that take a name and generate a fake name
+# Swaps first and last name
 def name_reverser(string)
-# Swap first and last name
    name_array = string.split(' ').reverse
    modified_name = name_array.join(' ')
 end
@@ -66,20 +65,27 @@ end
 
 
 
-# Add user interface
+# Add user interface and store both real name and fake name in a hash
 puts "Welcome to the Spy Name Generator!"
 
 real_name = ""
+name_hash = Hash.new
 until real_name == "quit"
 	puts " "
-	puts "Please enter your real name:"
-	real_name = gets.chomp.downcase
-	spy_name = consonant_converter(vowel_converter(name_reverser(real_name)))
-	if real_name != "quit"
-	    puts "Your spy name is: #{spy_name}"
+	puts "Please enter your real name ('quit' to exit):"
+	real_name = gets.chomp
+		if real_name != "quit"
+		name_hash.store(real_name, "")
+		hash_real_name = real_name
+		real_name = real_name.downcase
+		spy_name = consonant_converter(vowel_converter(name_reverser(real_name)))
+	    puts "Your spy name is: #{spy_name}!"
+	    name_hash[hash_real_name] = spy_name
 	end
 end
 
-
-# name_reverser(real_name)
-# vowel_converter(name_reverser(real_name))
+# Display all name data from the hash
+puts " "
+name_hash.each { |key, value| 
+puts "#{key} is also known as #{value}."
+}
