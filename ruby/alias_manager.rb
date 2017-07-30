@@ -64,10 +64,22 @@ def consonant_converter(string)
     return new_name
 end
 
-# Add user interface
-puts "Please enter your real name:"
-real_name = gets.chomp.downcase
 
-name_reverser(real_name)
-vowel_converter(name_reverser(real_name))
-consonant_converter(vowel_converter(name_reverser(real_name)))
+
+# Add user interface
+puts "Welcome to the Spy Name Generator!"
+
+real_name = ""
+until real_name == "quit"
+	puts " "
+	puts "Please enter your real name:"
+	real_name = gets.chomp.downcase
+	spy_name = consonant_converter(vowel_converter(name_reverser(real_name)))
+	if real_name != "quit"
+	    puts "Your spy name is: #{spy_name}"
+	end
+end
+
+
+# name_reverser(real_name)
+# vowel_converter(name_reverser(real_name))
