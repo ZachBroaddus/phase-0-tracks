@@ -22,6 +22,9 @@ class Puppy
     puts "*created a puddle of drool*"
   end
 
+  def initialize
+  	puts "Initializing new puppy instance ..."
+  end
 end
 
 rover = Puppy.new
