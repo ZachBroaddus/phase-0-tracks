@@ -24,7 +24,7 @@ class Puppy
   end
 
   def initialize
-  	puts "Initializing new puppy instance ..."
+    puts "Initializing new puppy instance ..."
   end
 end
 
@@ -53,14 +53,16 @@ class T_rex
 end
 
 steve = T_rex.new
-
 steve.snarl
 steve.rend_flesh
 
-T_rex_array = []
-50.times do 
-	steve = T_rex.new 
-	T_rex_array << steve
+t_rex_array = []
+50.times do
+  carl = T_rex.new
+  t_rex_array.push(carl)
 end
 
-puts T_rex_array.length
+t_rex_array.each do |baby_t_rex|
+  baby_t_rex.snarl
+  baby_t_rex.rend_flesh
+end
