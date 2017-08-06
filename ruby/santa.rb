@@ -28,7 +28,12 @@ def get_mad_at=(reindeer_name)
        	  @reindeer_ranking[index_num], @reindeer_ranking[8] = @reindeer_ranking[8], @reindeer_ranking[index_num]
        end
 	end
-	puts @reindeer_ranking
+	puts "The new reindeer ranking is: #{@reindeer_ranking}"
+end
+
+def reset_gender=(new_gender)
+	@gender = new_gender
+	puts "New gender is: #{@gender}"
 end
 
 end
@@ -38,6 +43,7 @@ francine.speak
 francine.eat_milk_and_cookies("oatmeal raisin")
 francine.celebrate_birthday
 francine.get_mad_at = "Vixen"
+francine.reset_gender = "male"
 
 santa_array = []
 example_genders = ["transgender", "female", "bigender", "male", "gender queer", "gender fluid", "N/A"]
