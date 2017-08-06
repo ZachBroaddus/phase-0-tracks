@@ -1,4 +1,6 @@
 class Santa
+	attr_reader :age, :ethnicity
+
 	def speak
 		puts "Ho, ho, ho! Haaaappy holidays!"
 	end
@@ -13,15 +15,6 @@ class Santa
 		@ethnicity = ethnicity
 		@reindeer_ranking = ["Rudolph", "Dasher", "Dancer", "Prancer", "Vixen", "Comet", "Cupid", "Donner", "Blitzen"]
 		@age = 0
-	end
-
-	# Getter methods
-	def age
-		@age
-	end
-
-	def ethnicity
-		@ethnicity
 	end
 
 	# Setter methods
