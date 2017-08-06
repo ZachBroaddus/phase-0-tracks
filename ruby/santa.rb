@@ -14,36 +14,44 @@ class Santa
 		@reindeer_ranking = ["Rudolph", "Dasher", "Dancer", "Prancer", "Vixen", "Comet", "Cupid", "Donner", "Blitzen"]
 		@age = 0
 	end
-# Getter methods
 
-
-# Setter methods
-def celebrate_birthday
-	@age = @age += 1
-end
-
-def get_mad_at=(reindeer_name)
-	@reindeer_ranking.length.times do |index_num|
-       if @reindeer_ranking[index_num] == reindeer_name
-       	  @reindeer_ranking[index_num], @reindeer_ranking[8] = @reindeer_ranking[8], @reindeer_ranking[index_num]
-       end
+	# Getter methods
+	def age
+		@age
 	end
-	puts "The new reindeer ranking is: #{@reindeer_ranking}"
-end
 
-def reset_gender=(new_gender)
-	@gender = new_gender
-	puts "New gender is: #{@gender}"
-end
+	def ethnicity
+		@ethnicity
+	end
 
+	# Setter methods
+	def celebrate_birthday
+		@age = @age += 1
+	end
+
+	def get_mad_at=(reindeer_name)
+		@reindeer_ranking.length.times do |index_num|
+	       if @reindeer_ranking[index_num] == reindeer_name
+	       	  @reindeer_ranking[index_num], @reindeer_ranking[8] = @reindeer_ranking[8], @reindeer_ranking[index_num]
+	       end
+		end
+		puts "The new reindeer ranking is: #{@reindeer_ranking}"
+	end
+
+	def reset_gender=(new_gender)
+		@gender = new_gender
+		puts "New gender is: #{@gender}"
+	end
 end
 
 francine = Santa.new("female", "French")
-francine.speak
-francine.eat_milk_and_cookies("oatmeal raisin")
-francine.celebrate_birthday
-francine.get_mad_at = "Vixen"
-francine.reset_gender = "male"
+# francine.speak
+# francine.eat_milk_and_cookies("oatmeal raisin")
+# francine.celebrate_birthday
+# francine.get_mad_at = "Vixen"
+# francine.reset_gender = "male"
+puts francine.age
+puts francine.ethnicity
 
 santa_array = []
 example_genders = ["transgender", "female", "bigender", "male", "gender queer", "gender fluid", "N/A"]
