@@ -1,3 +1,4 @@
+# Stand-alone module
 # module Shout
 #     def self.yell_angrily(words)
 #     	words + "!!!" + " :("
@@ -8,6 +9,7 @@
 #     end
 # end
 
+# Mixin module
 module Shout
     def yell_angrily(words)
     	words + "!!!" + " :("
@@ -34,8 +36,11 @@ class Auctioneer
 	end
 end
 
+# Driver code to test stand-alone module
 # puts Shout.yell_angrily("Oh no, NOT AGAIN")
 # puts Shout.yelling_happily("Yasssss")
+
+# Driver code to test mixin module
 singer = Singer.new
 puts singer.yell_angrily("Gen'rals gathered in their masses,
 Just like witches at black masses")
