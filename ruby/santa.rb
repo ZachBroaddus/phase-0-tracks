@@ -1,5 +1,6 @@
 class Santa
-	attr_reader :age, :ethnicity
+	attr_reader :ethnicity
+	attr_accessor :age, :gender, :reindeer_ranking
 
 	def speak
 		puts "Ho, ho, ho! Haaaappy holidays!"
@@ -17,24 +18,24 @@ class Santa
 		@age = 0
 	end
 
-	# Setter methods
-	def celebrate_birthday
-		@age = @age += 1
-	end
+# Setter methods that were removed after refactoring. Left in as comments to show that Release 2 was completed.
+	# def celebrate_birthday
+	# 	@age = @age += 1
+	# end
 
-	def get_mad_at=(reindeer_name)
-		@reindeer_ranking.length.times do |index_num|
-	       if @reindeer_ranking[index_num] == reindeer_name
-	       	  @reindeer_ranking[index_num], @reindeer_ranking[8] = @reindeer_ranking[8], @reindeer_ranking[index_num]
-	       end
-		end
-		puts "The new reindeer ranking is: #{@reindeer_ranking}"
-	end
+	# def get_mad_at=(reindeer_name)
+	# 	@reindeer_ranking.length.times do |index_num|
+	#        if @reindeer_ranking[index_num] == reindeer_name
+	#        	  @reindeer_ranking[index_num], @reindeer_ranking[8] = @reindeer_ranking[8], @reindeer_ranking[index_num]
+	#        end
+	# 	end
+	# 	puts "The new reindeer ranking is: #{@reindeer_ranking}"
+	# end
 
-	def reset_gender=(new_gender)
-		@gender = new_gender
-		puts "New gender is: #{@gender}"
-	end
+	# def reset_gender=(new_gender)
+	# 	@gender = new_gender
+	# 	puts "New gender is: #{@gender}"
+	# end
 end
 
 francine = Santa.new("female", "French")
@@ -43,8 +44,8 @@ francine = Santa.new("female", "French")
 # francine.celebrate_birthday
 # francine.get_mad_at = "Vixen"
 # francine.reset_gender = "male"
-puts francine.age
-puts francine.ethnicity
+# puts francine.age
+# puts francine.ethnicity
 
 santa_array = []
 example_genders = ["transgender", "female", "bigender", "male", "gender queer", "gender fluid", "N/A"]
