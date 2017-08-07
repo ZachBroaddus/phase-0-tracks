@@ -12,8 +12,11 @@
 # Allow the user to make guesses until they run out of tries or until they guess the word correctly
 # Display a congratulatory message if the player wins or a taunting message if they lose
 
+# Game class
 class WordGame
-	attr_reader :won_game
+	attr_reader :tries_remaining, :won_game, :hidden_word
+
+	attr_reader :guess_history
 
 	def initialize(original_word)
 # Input: word entered by player 1, set to variable
@@ -23,7 +26,7 @@ class WordGame
 		@original_word_array = Array.new
 		@hidden_word = Array.new
 		@guess_history = Array.new
-		@tries_remaining = original_word.length
+		@tries_remaining = original_word.length + 3
 		@won_game = false
 		original_word.length.times { @hidden_word.push("_") }
 	end
@@ -53,38 +56,79 @@ class WordGame
 # Check to see if guess is a repeat and decrement from total tries if it is not
 # Input: player 2 guess
 # Output: updated guess counter
-		index_num = 0
 		used_a_try = true
-		@guess_history.each do
-			if @guess_history[index_num] == guess
+		@guess_history.each do |letter|
+			if letter == guess
 				used_a_try = false
 				break
 			end
 		end
-		if used_a_try == true
+		unless used_a_try == false
 			@tries_remaining -= 1
 		end
 		@tries_remaining
 	end
 
-	def won_game(guess)
+	def won_game?(guess)
 		if guess == @original_word
 			@won_game = true
-		elsif @original_word == @hidden_word
+		elsif @original_word_array == @hidden_word
 			@won_game = true
 		end
 		@won_game
 	end
 
 	def parting_message(won_game)
-# Display winning or losing message
+# Return winning or losing message
 # Input: won game?
 # Output: parting message
+		parting_message = ""
+		if won_game
+			parting_message = "Congratulations, you won!"
+		else
+			parting_message = "Wow, that was bad... I mean, really bad!"
+		end
+		parting_message
 	end
 end
-guess = "n"
-game = WordGame.new("unicorn")
-p game.letter_match(guess)
-p game.repeat_guess(guess)
-p game.update_guess_log(guess)
-p game.won_game(guess)
+
+# Driver test code
+# guess = "n"
+# game = WordGame.new("unicorn")
+# p game.letter_match(guess)
+# p game.repeat_guess(guess)
+# p game.update_guess_log(guess)
+# p game.won_game(guess)
+# puts game.parting_message(@won_game)
+
+# User interface
+puts "Welcome to Word Guess!"
+puts "Player 1, please enter a word that your opponent must guess:"
+original_word = gets.chomp.downcase
+game = WordGame.new(original_word)
+pretty_formatting_array = [" "]
+puts pretty_formatting_array * 30
+puts "Player 2, it's your turn!"
+
+while game.tries_remaining > 0 && !game.won_game
+	puts " "
+	puts "Please enter a guess. You can enter a letter or try to guess the whole word: "
+	guess = gets.chomp.downcase
+
+	game.letter_match(guess)
+	game.repeat_guess(guess)
+	game.update_guess_log(guess)
+	game.won_game?(guess)	
+	puts " "
+
+	if guess != original_word
+		puts "Mystery word: #{game.hidden_word.join("")}"
+	end
+
+	if !game.won_game
+		puts "#{game.tries_remaining} tries remaining"
+		puts " "
+	end
+end
+
+puts game.parting_message(game.won_game)
