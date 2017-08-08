@@ -1,7 +1,7 @@
 # Virus Predictor
 
-# I worked on this challenge [by myself, with: ].
-# We spent [#] hours on this challenge.
+# I worked on this challenge [by myself, with: Kristin Macdonough].
+# We spent [1.5] hours on this challenge.
 
 # EXPLANATION OF require_relative
 # The bridge between two documents;
@@ -50,8 +50,6 @@ class VirusPredictor
 
   # calculating how fast virus will spread based on population density
   def speed_of_spread #in months
-    # We are still perfecting our formula here. The speed is also affected
-    # by additional factors we haven't added into this functionality.
     
     if @population_density >= 200
       speed = 0.5
@@ -76,20 +74,6 @@ end
 # DRIVER CODE
  # initialize VirusPredictor for each state
 
-=begin
-alabama = VirusPredictor.new("Alabama", STATE_DATA["Alabama"][:population_density], STATE_DATA["Alabama"][:population])
-alabama.virus_effects
-
-jersey = VirusPredictor.new("New Jersey", STATE_DATA["New Jersey"][:population_density], STATE_DATA["New Jersey"][:population])
-jersey.virus_effects
-
-california = VirusPredictor.new("California", STATE_DATA["California"][:population_density], STATE_DATA["California"][:population])
-california.virus_effects
-
-alaska = VirusPredictor.new("Alaska", STATE_DATA["Alaska"][:population_density], STATE_DATA["Alaska"][:population])
-alaska.virus_effects
-=end
-
 STATE_DATA.each do |state, value|
   state = VirusPredictor.new(state, value[:population_density], value[:population])
   state.virus_effects
@@ -98,3 +82,24 @@ end
 
 #=======================================================================
 # Reflection Section
+# * What are the differences between the two different hash syntaxes shown in the state_data file?
+# 	They used the rocket syntax for the outer array, so that they could store the keys as strings and display them to
+# 	the user. The inner array used symbols for keys, which is a good choice for naming keys that will not be displayed
+# 	to the user.
+
+# * What does require_relative do? How is it different from require?
+# 	require_relative is used to link files within the same directory and require is used to link files that may be in
+# 	different directories.
+
+# * What are some ways to iterate through a hash?
+# 	We used the .each method in our program, but you could also use .map or even .times, if you know the specific number
+# 	of times that the code block will need to run. There are also options such as while loops, which work, but are
+# 	less ideal.
+
+# * When refactoring virus_effects, what stood out to you about the variables, if anything?
+# 	They did not need to be passed into the function, because all instance methods automatically have access to the 
+# 	instance variables.
+
+# * What concept did you most solidify in this challenge?
+# 	I think this was great refactoring practice. I'm fairly sure that the only way I'll get good at refactoring is through
+# 	lots of practice. Given that, it was nice to have this practice opportunity.
