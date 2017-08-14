@@ -21,7 +21,7 @@ function longest_item(array) {
           longest_string = longer_string;
         }
       }
-      }
+    }
   } else {
     longest_string = array[0];
   }
@@ -47,9 +47,10 @@ function object_matcher(obj1, obj2) {
 //given length
 //Input: Integer
 //Output: Array of strings. Array is of length 'integer'. Strings are of random length.
-//For each object to be added to the array:
+//For each string to be added to the array:
 //Generate random number for length of string (1-10)
 //Generate random character for each letter of string
+//Add each random character to string
 //Add string to array
 
 function rand_array(int) {
@@ -58,7 +59,7 @@ function rand_array(int) {
   for (i = 0; i < int; i++) {
     new_string = "";
     for (x = 0; x < Math.floor((Math.random() * 10) + 1); x++){
-    new_string += alphabet[Math.floor((Math.random() * 26) + 1)];
+    new_string += alphabet[Math.floor(Math.random() * 26)];
     }
     new_array.push(new_string);
   }
@@ -75,4 +76,15 @@ function rand_array(int) {
 // console.log(object_matcher(obj1, obj2));
 
 //Release 2 test code:
-console.log(rand_array(3));
+// console.log(rand_array(3));
+// console.log(longest_item(rand_array(3)));
+
+
+for (y = 0; y < 10; y++) {
+  test_array = [];
+  test_array = rand_array(Math.floor((Math.random() * 5) + 1));
+  console.log("Array number " + (y + 1) + ":");
+  console.log(test_array);
+  console.log("Longest word in array:");
+  console.log(longest_item(test_array));
+}
