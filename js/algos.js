@@ -36,8 +36,10 @@ function longest_item(array) {
 //If no match is found, report that outcome
 
 function object_matcher(obj1, obj2) {
-  for (var i = 0; i < obj2.length; i++) {
-
+  if (obj1['animal'] == obj2['animal'] || obj1['name'] == obj2['name']) {
+    return true;
+  } else {
+    return false;
   }
 }
 
@@ -46,8 +48,6 @@ function object_matcher(obj1, obj2) {
 // console.log(longest_item(array));
 
 //Release 1 test code:
-var obj1 = {};
-var obj2 = {};
+var obj1 = {animal: "Bunny", name: "Cleo"};
+var obj2 = {animal: "Cat", name: "Alex"};
 console.log(object_matcher(obj1, obj2));
-
-
