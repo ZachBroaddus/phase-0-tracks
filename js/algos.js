@@ -43,11 +43,36 @@ function object_matcher(obj1, obj2) {
   }
 }
 
+//Release 2: Write a function that takes an integer for length, and builds and returns an array of random strings of the 
+//given length
+//Input: Integer
+//Output: Array of strings. Array is of length 'integer'. Strings are of random length.
+//For each object to be added to the array:
+//Generate random number for length of string (1-10)
+//Generate random character for each letter of string
+//Add string to array
+
+function rand_array(int) {
+  new_array = [];
+  alphabet = "abcdefghijklmnopqrstuvwxyz";
+  for (i = 0; i < int; i++) {
+    new_string = "";
+    for (x = 0; x < Math.floor((Math.random() * 10) + 1); x++){
+    new_string += alphabet[Math.floor((Math.random() * 26) + 1)];
+    }
+    new_array.push(new_string);
+  }
+  return new_array;
+}
+
 //Release 0 test code:
 // var array = ["some words", "transmogrification", "some other words", "Saskatchewan", "antidisestablishmentarianism"];
 // console.log(longest_item(array));
 
 //Release 1 test code:
-var obj1 = {animal: "Bunny", name: "Cleo"};
-var obj2 = {animal: "Cat", name: "Alex"};
-console.log(object_matcher(obj1, obj2));
+// var obj1 = {animal: "Bunny", name: "Cleo"};
+// var obj2 = {animal: "Cat", name: "Alex"};
+// console.log(object_matcher(obj1, obj2));
+
+//Release 2 test code:
+console.log(rand_array(3));
