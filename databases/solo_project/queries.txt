@@ -1,0 +1,182 @@
+Release 2:
+
+1.
+sqlite> SELECT * FROM video_game;
+
+1|Castlevania|1|true|1
+2|The Adventures of Bayou Billy|1|false|1
+3|Mega Man|1|true|4
+4|Ducktales|1|true|4
+5|Escape from the Planet of the Robot Monsters|2|false|3
+6|Marble Madness|2|false|3
+7|Kid Icarus|1|true|2
+8|Metroid|1|true|2
+9|Ice Climber|2|false|2
+10|Donkey Kong|1|true|2
+11|Fake Game|4|false|1
+
+2.
+sqlite> UPDATE video_game SET game_dev_id=5 WHERE name="Fake Game";
+sqlite> SELECT * FROM video_game;
+
+1|Castlevania|1|true|1
+2|The Adventures of Bayou Billy|1|false|1
+3|Mega Man|1|true|4
+4|Ducktales|1|true|4
+5|Escape from the Planet of the Robot Monsters|2|false|3
+6|Marble Madness|2|false|3
+7|Kid Icarus|1|true|2
+8|Metroid|1|true|2
+9|Ice Climber|2|false|2
+10|Donkey Kong|1|true|2
+11|Fake Game|4|false|5
+
+3.
+sqlite> SELECT * FROM game_developer, video_game;
+
+1|Konami|1969|true|1|Castlevania|1|true|1
+1|Konami|1969|true|2|The Adventures of Bayou Billy|1|false|1
+1|Konami|1969|true|3|Mega Man|1|true|4
+1|Konami|1969|true|4|Ducktales|1|true|4
+1|Konami|1969|true|5|Escape from the Planet of the Robot Monsters|2|false|3
+1|Konami|1969|true|6|Marble Madness|2|false|3
+1|Konami|1969|true|7|Kid Icarus|1|true|2
+1|Konami|1969|true|8|Metroid|1|true|2
+1|Konami|1969|true|9|Ice Climber|2|false|2
+1|Konami|1969|true|10|Donkey Kong|1|true|2
+1|Konami|1969|true|11|Fake Game|4|false|5
+2|Nintendo|1889|true|1|Castlevania|1|true|1
+2|Nintendo|1889|true|2|The Adventures of Bayou Billy|1|false|1
+2|Nintendo|1889|true|3|Mega Man|1|true|4
+2|Nintendo|1889|true|4|Ducktales|1|true|4
+2|Nintendo|1889|true|5|Escape from the Planet of the Robot Monsters|2|false|3
+2|Nintendo|1889|true|6|Marble Madness|2|false|3
+2|Nintendo|1889|true|7|Kid Icarus|1|true|2
+2|Nintendo|1889|true|8|Metroid|1|true|2
+2|Nintendo|1889|true|9|Ice Climber|2|false|2
+2|Nintendo|1889|true|10|Donkey Kong|1|true|2
+2|Nintendo|1889|true|11|Fake Game|4|false|5
+3|Atari Games|1984|false|1|Castlevania|1|true|1
+3|Atari Games|1984|false|2|The Adventures of Bayou Billy|1|false|1
+3|Atari Games|1984|false|3|Mega Man|1|true|4
+3|Atari Games|1984|false|4|Ducktales|1|true|4
+3|Atari Games|1984|false|5|Escape from the Planet of the Robot Monsters|2|false|3
+3|Atari Games|1984|false|6|Marble Madness|2|false|3
+3|Atari Games|1984|false|7|Kid Icarus|1|true|2
+3|Atari Games|1984|false|8|Metroid|1|true|2
+3|Atari Games|1984|false|9|Ice Climber|2|false|2
+3|Atari Games|1984|false|10|Donkey Kong|1|true|2
+3|Atari Games|1984|false|11|Fake Game|4|false|5
+4|Capcom|1979|true|1|Castlevania|1|true|1
+4|Capcom|1979|true|2|The Adventures of Bayou Billy|1|false|1
+4|Capcom|1979|true|3|Mega Man|1|true|4
+4|Capcom|1979|true|4|Ducktales|1|true|4
+4|Capcom|1979|true|5|Escape from the Planet of the Robot Monsters|2|false|3
+4|Capcom|1979|true|6|Marble Madness|2|false|3
+4|Capcom|1979|true|7|Kid Icarus|1|true|2
+4|Capcom|1979|true|8|Metroid|1|true|2
+4|Capcom|1979|true|9|Ice Climber|2|false|2
+4|Capcom|1979|true|10|Donkey Kong|1|true|2
+4|Capcom|1979|true|11|Fake Game|4|false|5
+5|Some Imaginary Company|2025|true|1|Castlevania|1|true|1
+5|Some Imaginary Company|2025|true|2|The Adventures of Bayou Billy|1|false|1
+5|Some Imaginary Company|2025|true|3|Mega Man|1|true|4
+5|Some Imaginary Company|2025|true|4|Ducktales|1|true|4
+5|Some Imaginary Company|2025|true|5|Escape from the Planet of the Robot Monsters|2|false|3
+5|Some Imaginary Company|2025|true|6|Marble Madness|2|false|3
+5|Some Imaginary Company|2025|true|7|Kid Icarus|1|true|2
+5|Some Imaginary Company|2025|true|8|Metroid|1|true|2
+5|Some Imaginary Company|2025|true|9|Ice Climber|2|false|2
+5|Some Imaginary Company|2025|true|10|Donkey Kong|1|true|2
+5|Some Imaginary Company|2025|true|11|Fake Game|4|false|5
+
+4.
+sqlite> SELECT dev_name, name, num_of_players, has_sequel
+   ...> FROM game_developer
+   ...> JOIN video_game
+   ...> ON game_developer.id = video_game.game_dev_id;
+
+Konami|Castlevania|1|true
+Konami|The Adventures of Bayou Billy|1|false
+Capcom|Mega Man|1|true
+Capcom|Ducktales|1|true
+Atari Games|Escape from the Planet of the Robot Monsters|2|false
+Atari Games|Marble Madness|2|false
+Nintendo|Kid Icarus|1|true
+Nintendo|Metroid|1|true
+Nintendo|Ice Climber|2|false
+Nintendo|Donkey Kong|1|true
+Some Imaginary Company|Fake Game|4|false
+
+5.
+sqlite> DELETE FROM video_game
+   ...> WHERE name="Fake Game";
+sqlite> SELECT * FROM video_game;
+
+1|Castlevania|1|true|1
+2|The Adventures of Bayou Billy|1|false|1
+3|Mega Man|1|true|4
+4|Ducktales|1|true|4
+5|Escape from the Planet of the Robot Monsters|2|false|3
+6|Marble Madness|2|false|3
+7|Kid Icarus|1|true|2
+8|Metroid|1|true|2
+9|Ice Climber|2|false|2
+10|Donkey Kong|1|true|2
+
+Release 3:
+
+2.
+sqlite> SELECT dev_name, name, num_of_players, has_sequel
+   ...> FROM game_developer
+   ...> JOIN video_game
+   ...> ON game_developer.id = video_game.game_dev_id;
+
+Konami|Castlevania|1|true
+Konami|The Adventures of Bayou Billy|1|false
+Capcom|Mega Man|1|true
+Capcom|Ducktales|1|true
+Atari Games|Escape from the Planet of the Robot Monsters|2|false
+Atari Games|Marble Madness|2|false
+Nintendo|Kid Icarus|1|true
+Nintendo|Metroid|1|true
+Nintendo|Ice Climber|2|false
+Nintendo|Donkey Kong|1|true
+
+sqlite> SELECT dev_name, name, num_of_players, has_sequel
+   ...> FROM game_developer
+   ...> LEFT JOIN video_game
+   ...> ON game_developer.id = video_game.game_dev_id;
+
+Konami|Castlevania|1|true
+Konami|The Adventures of Bayou Billy|1|false
+Nintendo|Donkey Kong|1|true
+Nintendo|Ice Climber|2|false
+Nintendo|Kid Icarus|1|true
+Nintendo|Metroid|1|true
+Atari Games|Escape from the Planet of the Robot Monsters|2|false
+Atari Games|Marble Madness|2|false
+Capcom|Ducktales|1|true
+Capcom|Mega Man|1|true
+Some Imaginary Company|||
+
+sqlite> SELECT dev_name, name, num_of_players, has_sequel
+   ...> FROM game_developer
+   ...> JOIN video_game
+   ...> ON game_developer.id = video_game.game_dev_id
+   ...> WHERE game_developer.id=2;
+
+Nintendo|Kid Icarus|1|true
+Nintendo|Metroid|1|true
+Nintendo|Ice Climber|2|false
+Nintendo|Donkey Kong|1|true
+
+sqlite> SELECT dev_name, name, num_of_players, has_sequel
+   ...> FROM game_developer
+   ...> JOIN video_game
+   ...> ON game_developer.id = video_game.game_dev_id
+   ...> WHERE num_of_players > 1;
+
+Atari Games|Escape from the Planet of the Robot Monsters|2|false
+Atari Games|Marble Madness|2|false
+Nintendo|Ice Climber|2|false
