@@ -43,6 +43,9 @@ end
 # Output: updated record
 # Allows user to select a game to update by game name, allows them to select which 
 # piece of data they would like to update, and takes the updated value
+def update(db, game_name, value_to_update, new_value)
+  db.execute("UPDATE games SET #{value_to_update}=#{new_value} WHERE name=?", [game_name]) 
+end
 
 # Delete a game record
 # Input: db, game_to_delete
@@ -56,7 +59,8 @@ end
 
 # Test Driver code
 # create(db, "Mega Man", 58.85, "Capcom", "false", "false")
-read(db, "Mega Man")
+# read(db, "Mega Man")
+update(db, "Mega Man", "price", 200.00)
 
 # User interface
 # Ask user what they would like to do (CRUD) using a loop that allows the user to exit when finished.
