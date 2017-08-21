@@ -34,6 +34,9 @@ end
 # Input: db, name
 # Output: record for game selected by user
 # Allows user to select game record and displays corresponding record
+def read(db, name)
+  puts db.execute("SELECT * FROM games WHERE name=(?)", [name])
+end
 
 # Update a game record
 # Input: db, game_name, value_to_update, new_value
@@ -52,7 +55,8 @@ end
 
 
 # Test Driver code
-create(db, "Mega Man", 58.85, "Capcom", "false", "false")
+# create(db, "Mega Man", 58.85, "Capcom", "false", "false")
+read(db, "Mega Man")
 
 # User interface
 # Ask user what they would like to do (CRUD) using a loop that allows the user to exit when finished.
