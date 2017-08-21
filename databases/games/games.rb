@@ -51,16 +51,22 @@ end
 # Input: db, game_to_delete
 # Output: database with record deleted
 # Displays all game records, allows user to select game to delete by index number, deletes game record
+def delete(db, game_name)
+  db.execute("DELETE FROM games WHERE name=?", [game_name])
+end
 
 # Show all game records
 # Input: db
 # Output: displays all game records
-
+def display_all(db)
+  print db.execute("SELECT name, price, game_dev, cib, is_new FROM games")
+end
 
 # Test Driver code
 # create(db, "Mega Man", 58.85, "Capcom", "false", "false")
 # read(db, "Mega Man")
-update(db, "Mega Man", "price", 200.00)
+# update(db, "Mega Man", "price", 200.00)
+# delete(db, "Mega Man")
 
 # User interface
 # Ask user what they would like to do (CRUD) using a loop that allows the user to exit when finished.
