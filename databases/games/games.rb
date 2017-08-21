@@ -119,4 +119,28 @@ end
     puts "'c'-Create a record, 'r'-Read a record, 'u'-Update a record, 'd'-Delete a record, or 'all'-Show all records"
     puts "Enter 'q' to quit"
     user_input = gets.chomp
+
+    if user_input == 'c'
+      puts "Game name?: "
+      game_name = gets.chomp
+      puts "Game value in dollars?: "
+      game_price = gets.chomp
+      puts "Game developer?: "
+      game_dev = gets.chomp
+      puts "Is the game complete in box? (y/n): "
+      cib = gets.chomp
+        if cib == 'y'
+          cib = "true"
+        elsif cib == 'n'
+          cib = "false"
+        end
+      puts "Is the game still sealed?(y/n): "
+      is_new = gets.chomp
+        if is_new == 'y'
+          is_new = "true"
+        elsif is_new == 'n'
+          is_new = "false"
+        end
+      create(db, game_name, game_price, game_dev, cib, is_new)
+    end
   end
