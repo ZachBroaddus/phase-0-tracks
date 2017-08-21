@@ -68,6 +68,7 @@ end
 # Input: db
 # Output: All game records
 def display_all(db)
+  puts ""
   game_info = db.execute("SELECT name, price, game_dev, cib, is_new FROM games ORDER BY name ASC")
   puts "Name-------------------Price------------------Developer--------------CIB--------------------New"
   game_info.each do |array| 
