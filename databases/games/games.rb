@@ -27,7 +27,8 @@ db.execute(create_table)
 # Output: database with record added
 # Takes user input and uses it to add a new game record to the database
 def create(db, name, price, game_dev, cib, is_new)
-  db.execute("INSERT INTO games (name, price, game_dev, cib, is_new) VALUES (?, ?, ?, ?, ?)", [name, price, game_dev, cib, is_new])
+  db.execute("INSERT INTO games (name, price, game_dev, cib, is_new) 
+  VALUES (?, ?, ?, ?, ?)", [name, price, game_dev, cib, is_new])
 end
 
 # Read a game record
@@ -35,7 +36,13 @@ end
 # Output: record for game selected by user
 # Allows user to select game record and displays corresponding record
 def read(db, name)
-  print db.execute("SELECT * FROM games WHERE name=(?)", [name])
+  game_info = db.execute("SELECT name, price, game_dev, cib, is_new FROM games WHERE name=(?)", [name])
+  puts "**Name------------Price--------Developer-----CIB----------New**"
+  game_info.each do |array| 
+    array.each do |item|
+      print "  #{item}      " 
+    end
+  end
 end
 
 # Update a game record
@@ -50,16 +57,16 @@ end
 # Delete a game record
 # Input: db, game_to_delete
 # Output: database with record deleted
-# Displays all game records, allows user to select game to delete by index number, deletes game record
+# Allows user to select game to delete by name, deletes game record
 def delete(db, game_name)
   db.execute("DELETE FROM games WHERE name=?", [game_name])
 end
 
 # Show all game records
 # Input: db
-# Output: displays all game records
+# Output: All game records
 def display_all(db)
-  print db.execute("SELECT name, price, game_dev, cib, is_new FROM games")
+  game_info = db.execute("SELECT name, price, game_dev, cib, is_new FROM games")
 end
 
 # Test Driver code
@@ -67,7 +74,7 @@ end
 # create(db, "Bork", 99.95, "Konami", "true", "false")
 # create(db, "Stuff", 101.35, "Atari", "false", "true")
 # create(db, "Gamez", 2.00, "Blizzard", "false", "false")
-# read(db, "Mega Man")
+read(db, "Mega Man")
 # update(db, "Mega Man", "price", 200.00)
 # delete(db, "Mega Man")
 # display_all(db)
