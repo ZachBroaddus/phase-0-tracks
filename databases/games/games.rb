@@ -38,10 +38,10 @@ end
 def read(db, name)
   puts ""
   game_info = db.execute("SELECT name, price, game_dev, cib, is_new FROM games WHERE name=(?)", [name])
-  puts "Name--------------Price-------------Developer---------CIB---------------New"
+  puts "Name-------------------Price------------------Developer--------------CIB--------------------New"
   game_info.each do |array| 
     array.each do |item|
-      print "#{item}".ljust(18)      
+      print "#{item}".ljust(23)      
     end
   print "\n"
   end
@@ -68,11 +68,11 @@ end
 # Input: db
 # Output: All game records
 def display_all(db)
-  game_info = db.execute("SELECT name, price, game_dev, cib, is_new FROM games")
-  puts "Name--------------Price-------------Developer---------CIB---------------New"
+  game_info = db.execute("SELECT name, price, game_dev, cib, is_new FROM games ORDER BY name ASC")
+  puts "Name-------------------Price------------------Developer--------------CIB--------------------New"
   game_info.each do |array| 
     array.each do |item|
-      print "#{item}".ljust(18)      
+      print "#{item}".ljust(23)      
     end
   print "\n"
   end
