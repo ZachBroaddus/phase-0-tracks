@@ -107,3 +107,16 @@ end
   # If 'Display All Records' call Show All Records method to display all game records.
 
   # If 'Exit' exit the program
+
+  puts ""
+  puts "=== Welcome to the Game Collection Manager! ==="
+  puts ""
+
+  user_input = ""
+  until user_input == 'q'
+    puts "What would you like to do?"
+    puts ""
+    puts "'c'-Create a record, 'r'-Read a record, 'u'-Update a record, 'd'-Delete a record, or 'all'-Show all records"
+    puts "Enter 'q' to quit"
+    user_input = gets.chomp
+  end
