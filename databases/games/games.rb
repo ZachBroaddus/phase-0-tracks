@@ -118,29 +118,42 @@ end
     puts ""
     puts "'c'-Create a record, 'r'-Read a record, 'u'-Update a record, 'd'-Delete a record, or 'all'-Show all records"
     puts "Enter 'q' to quit"
-    user_input = gets.chomp
+    user_input = gets.chomp.downcase
 
     if user_input == 'c'
       puts "Game name?: "
-      game_name = gets.chomp
+      game_name = gets.chomp.downcase
       puts "Game value in dollars?: "
       game_price = gets.chomp
       puts "Game developer?: "
-      game_dev = gets.chomp
+      game_dev = gets.chomp.downcase
       puts "Is the game complete in box? (y/n): "
-      cib = gets.chomp
+      cib = gets.chomp.downcase
         if cib == 'y'
           cib = "true"
         elsif cib == 'n'
           cib = "false"
         end
       puts "Is the game still sealed?(y/n): "
-      is_new = gets.chomp
+      is_new = gets.chomp.downcase
         if is_new == 'y'
           is_new = "true"
         elsif is_new == 'n'
           is_new = "false"
         end
       create(db, game_name, game_price, game_dev, cib, is_new)
+    end
+
+    if user_input == 'r'
+      puts "Which game record would you like to see? Please enter the name of the game: "
+      game_name = gets.chomp.downcase
+      read(db, game_name)
+    end
+
+
+
+
+    if user_input == 'all'
+      display_all(db)
     end
   end
