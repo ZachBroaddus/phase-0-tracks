@@ -36,6 +36,7 @@ end
 # Output: record for game selected by user
 # Allows user to select game record and displays corresponding record
 def read(db, name)
+  puts ""
   game_info = db.execute("SELECT name, price, game_dev, cib, is_new FROM games WHERE name=(?)", [name])
   puts "Name--------------Price-------------Developer---------CIB---------------New"
   game_info.each do |array| 
@@ -52,7 +53,7 @@ end
 # Allows user to select a game to update by game name, allows them to select which 
 # piece of data they would like to update, and takes the updated value
 def update(db, game_name, value_to_update, new_value)
-  db.execute("UPDATE games SET #{value_to_update}=#{new_value} WHERE name=?", [game_name]) 
+  db.execute("UPDATE games SET #{value_to_update}=? WHERE name=?", [new_value, game_name]) 
 end
 
 # Delete a game record
@@ -83,7 +84,7 @@ end
 # create(db, "Stuff", 101.35, "Atari", "false", "true")
 # create(db, "Gamez", 2.00, "Blizzard", "false", "false")
 # read(db, "Mega Man")
-# update(db, "Mega Man", "price", 200.00)
+# update(db, "Mega Man", "name", "mega man")
 # delete(db, "Mega Man")
 # display_all(db)
 
@@ -110,10 +111,10 @@ end
 
   puts ""
   puts "=== Welcome to the Game Collection Manager! ==="
-  puts ""
 
   user_input = ""
   until user_input == 'q'
+    puts ""
     puts "What would you like to do?"
     puts ""
     puts "'c'-Create a record, 'r'-Read a record, 'u'-Update a record, 'd'-Delete a record, or 'all'-Show all records"
@@ -142,6 +143,7 @@ end
           is_new = "false"
         end
       create(db, game_name, game_price, game_dev, cib, is_new)
+      puts "Your new game record has been added!"
     end
 
     if user_input == 'r'
@@ -150,8 +152,28 @@ end
       read(db, game_name)
     end
 
+    if user_input == 'u'
+      puts "Which game record would you like to update? Please enter the name of the game: "
+      game_name = gets.chomp.downcase
+      read(db, game_name)
+      puts "Which value would you like to update: 'name', 'price', 'game_dev', 'cib', or 'is_new'?: "
+      value_to_update = gets.chomp.downcase
+      puts "Please enter the new value: "
+      new_value = gets.chomp.downcase
+      update(db, game_name, value_to_update, new_value)
+      puts "That record has been successfully updated!"
+    end
 
-
+    if user_input == 'd'
+      puts "Which game record would you like to delete? Please enter the name of the game: "
+      game_name = gets.chomp.downcase
+      puts "Are you sure you would like to delete #{game_name} from the database? (y/n)"
+      user_input = gets.chomp.downcase
+        if user_input == 'y'
+          delete(db, game_name)
+          puts "That record has been successfully deleted!"
+        end
+    end
 
     if user_input == 'all'
       display_all(db)
