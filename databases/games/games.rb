@@ -37,11 +37,12 @@ end
 # Allows user to select game record and displays corresponding record
 def read(db, name)
   game_info = db.execute("SELECT name, price, game_dev, cib, is_new FROM games WHERE name=(?)", [name])
-  puts "**Name------------Price--------Developer-----CIB----------New**"
+  puts "Name--------------Price-------------Developer---------CIB---------------New"
   game_info.each do |array| 
     array.each do |item|
-      print "  #{item}      " 
+      print "#{item}".ljust(18)      
     end
+  print "\n"
   end
 end
 
@@ -67,6 +68,13 @@ end
 # Output: All game records
 def display_all(db)
   game_info = db.execute("SELECT name, price, game_dev, cib, is_new FROM games")
+  puts "Name--------------Price-------------Developer---------CIB---------------New"
+  game_info.each do |array| 
+    array.each do |item|
+      print "#{item}".ljust(18)      
+    end
+  print "\n"
+  end
 end
 
 # Test Driver code
@@ -74,7 +82,7 @@ end
 # create(db, "Bork", 99.95, "Konami", "true", "false")
 # create(db, "Stuff", 101.35, "Atari", "false", "true")
 # create(db, "Gamez", 2.00, "Blizzard", "false", "false")
-read(db, "Mega Man")
+# read(db, "Mega Man")
 # update(db, "Mega Man", "price", 200.00)
 # delete(db, "Mega Man")
 # display_all(db)
