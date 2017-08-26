@@ -1,6 +1,7 @@
 button {
   margin-bottom: 5px;
+  background-color: #c96a6a;
 }
 #duck-photo {
-  visibility: hidden;
+  display: none;
 }

@@ -1,9 +1,13 @@
 // script.js
 
-// $(function() {
-//   alert("hello?");
+// Test
+// $(function(){
+//       alert("JQuery is working!");
 // });
 
+// Change css styling of duck photo from hidden to visible with button click
 $(function(){
-      alert("JQuery is working!");
-    });
+  $('button').on('click', function() {
+    $('#duck-photo').fadeToggle(500).css('display', 'inline');
+  });
+});
