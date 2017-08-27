@@ -53,3 +53,15 @@ get '/contact/:address' do
   address = params[:address]
   "The address you requested is #{address}."
 end
+
+# write a GET route that takes a name as a query parameter and displays a message
+# that includes the name
+# If the query parameter is not present, display a default message
+get '/great_job' do
+  name = params[:name]
+  if name
+    "Great job, #{params[:name]}!"
+  else
+    "Great job...buddy!"
+  end
+end
