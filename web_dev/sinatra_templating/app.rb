@@ -30,8 +30,8 @@ end
 
 # create new campus locations via
 # a form
-post '/campuses/new' do
-  db.execute("INSERT INTO campuses (campus) VALUES (?)", [params['campus']])
+post '/campuses' do
+  db.execute("INSERT INTO campuses (campus_name) VALUES (?)", [params['campus_name']])
   redirect '/'
 end
 

@@ -4,7 +4,9 @@
   <title>Add a City</title>
 </head>
 <body>
-  <input type="text" name="campus" placeholder="Campus">
-  <button type="submit">Save</button>
+  <form action="/campuses" method="POST">
+    <input type="text" name="campus_name" placeholder="Campus">
+    <button type="submit">Save</button>
+  </form>
 </body>
 </html>

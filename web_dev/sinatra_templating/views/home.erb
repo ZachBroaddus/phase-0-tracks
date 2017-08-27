@@ -10,7 +10,7 @@
   <p>Click <a href="campuses/new">here</a> to create a new campus location.</p>
   <ul>
     <% @students.each do |student| %>
-      <li><%= student['name'] %>, <%= student['age'] %></li>
+      <li><%= student['name'] %>, <%= student['age'] %>, <%= student['campus'] %></li>
     <% end %>
   </ul>
 </body>
