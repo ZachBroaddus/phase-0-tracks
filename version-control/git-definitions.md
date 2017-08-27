@@ -1,4 +1,4 @@
-# Git Definitions
+# Git Definitions-Edited Version-Teacher Tag
 
 **Instructions: ** Define each of the following Git concepts.
 
